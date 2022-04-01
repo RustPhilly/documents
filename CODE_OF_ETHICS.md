@@ -63,7 +63,7 @@ Additionally, community organizers are available to help community members engag
 
 ## 8. Addressing Grievances
 
-If you feel you have been falsely or unfairly accused of violating this Code of Conduct, you should notify [GOVERNING_BODY] with a concise description of your grievance. Your grievance will be handled in accordance with our existing governing policies. [LINK_TO_POLICY]
+If you feel you have been falsely or unfairly accused of violating this Code of Conduct, you should email ![email address image](email-address-image.gif) with a concise description of your grievance. Your grievance will be handled in accordance with our existing governing policies. [LINK_TO_POLICY]
 
 [NOTE: Every organization's governing policies should dictate how you handle warnings and expulsions of community members. It is strongly recommended that you mention those policies here or in Section 7 and that you include a mechanism for addressing grievances.]
 
@@ -75,7 +75,7 @@ This code of conduct and its related procedures also applies to unacceptable beh
 
 ## 10. Contact info
 
-[YOUR CONTACT INFO HERE -- this should be a single person or a small team who can respond to issues directly]
+Community Organizer: [email address image](email-address-image.gif)
 
 ## 11. License and attribution
 
