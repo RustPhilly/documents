@@ -33,7 +33,7 @@ In deriving answers for these questions, we've uncovered that there are three di
 
 1. `formatter` (`Formatter` instance) - tends to be language agnostic (it should not know anything about the AST) and it's the one in charge of manipulating tokens and trivias. It's like a CRUD for our internal IR.
 2. `utils` - function groups common patterns around a specific language (as for now, only JS and its super languages). These `utils` usually work directly on the AST too.
-3. `format_element` - functions that you need to create the `rome_formatter` IR. Our IR is essentially an `enum`, called `FormatElement`. But we found that using utility functions are way better because they better help to shape and create the IR. For example, it's better to use a function called `soft_line_break_or_space` instead of directly using its implementation. 
+3. `format_element` - functions that you need to **create** the `rome_formatter` IR. Our IR is essentially an `enum`, called `FormatElement`. But we found that **using utility functions are way better** because they better help to shape and create the IR. For example, it's better to use a function called `soft_line_break_or_space` instead of directly using its implementation. 
 
 This means, when we aren't using or modifying formatter helpers (`formatter` methods) to manipulate `tokens` and `trivia`, then we need to determine whether we should be using or modifying `utils` or writing custom logic in `ToFormatElement`.
 
@@ -47,7 +47,8 @@ When should I
 
 ### leave a `formatter` method untouched and keep our logic within a specific Node type's `ToFormatElement`?
 - Anything that is node specific should remain in the node's `ToFormatElement` implementation.
-- Theoretically you always use the `formatter`, even when you indirectly call `token.format_or_empty(formatter)`. Usually you directly use the `formatter` when you don't have to format recurring patterns such as separated lists, delimited blocks, etc.;
+- Theoretically you always use the `formatter`, even when you indirectly call `token.format_or_empty(formatter)`.
+- Usually you directly use the `formatter` when you don't have to format recurring patterns such as separated lists, delimited blocks, etc.;
 
 ### add a new `formatter` method
 - When it's a frequent pattern used by a variety of nodes. If it only applies to a specific group of nodes, prefer `utils` (for example, formatting expressions with left and right hand sides)
