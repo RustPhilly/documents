@@ -67,17 +67,17 @@ Outstanding questions:
 If we look in the Rome Playground, we can see the Formatter IR is already being constructed, it's just being constructed "poorly" with verbatim tokens:
 ```rust
 // input
-<b>
-  test
-  </b>;
+<Foo>
+    text
+    </Foo>
 
 // output
 List [
     Verbatim(
-        Token("<b>\n  test\n  </b>", 0..17),
+        Token("<Foo>\n    text\n    </Foo>", 0..25),
     ),
-    Token(";", 17..18),
-    Token("", 19..19),
+    Token(";"),
+    Token("", 25..25),
     Line(Hard),
 ]
 ```
@@ -86,9 +86,9 @@ Before we touch any more code, let's write what we think the Formatter IR should
 
 ```rust
 // input
-<b>
-  test
-  </b>;
+<Foo>
+    text
+    </Foo>
 
 // expected output
 List [
