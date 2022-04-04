@@ -115,7 +115,7 @@ List [
 
 We won't be generating an IR like above, because that string of text represents a tree of nodes, each needs to have the knowledge of how to format itself, (which is why we have a file and `impl ToFormatElement` for each node type.
 
-The tricky part, I think will be knowing which formatter functions are available so that we end up with the `Line`'s and `Group`'s, that we want.
+The tricky part, I think will be knowing which formatter functions are available so that we end up with the `Line`'s and `Group`'s, that we want. (For example, "what is the difference between a `Group` and a `HardGroup`, and will we need it for this test case or the next one?")
 One way to see where `Group`'s and `Line`s and other `FormatterElement`s are being inserted is to take a look in the playground for javascript input that has already been implemented:
 
 <img src="../knowledge/javascript_formatter_ir_example.png" data-canonical-src="../knowledge/javascript_formatter_ir_example.png" width="200"/>
