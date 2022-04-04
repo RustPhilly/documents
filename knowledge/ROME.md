@@ -94,5 +94,31 @@ Before we touch any more code, let's write what we think the Formatter IR should
 /* TODO */
 ```
 
+Naive test case:
+```rust
+// input
+<Foo>
+    text
+    </Foo>
+
+// Formatter IR output
+List [
+    Token("<Foo>text</Foo>", 0..15), // <--- We won't be generating an IR like this
+    Token(";"),
+    Token("", 25..25),
+    Line(Hard),
+]
+
+// IR as code
+<Foo>text</Foo>;
+```
+
+We won't be generating an IR like above, because that string of text represents a tree of nodes, each needs to have the knowledge of how to format itself, (which is why we have a file and `impl ToFormatElement` for each node type.
+
+The tricky part, I think will be knowing which formatter functions are available so that we end up with the `Line`'s and `Group`'s, that we want.
+One way to see where `Group`'s and `Line`s and other `FormatterElement`s are being inserted is to take a look in the playground for javascript input that has already been implemented:
+
+<img src="../knowledge/javascript_formatter_ir_example.png" data-canonical-src="../knowledge/javascript_formatter_ir_example.png" width="200"/>
+
 Our issue: https://github.com/rome/tools/issues/2275
 (Other JSX Formatter PR for reference: https://github.com/rome/tools/pull/2273)
