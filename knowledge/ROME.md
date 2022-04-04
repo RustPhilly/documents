@@ -120,7 +120,9 @@ One way to see where `Group`'s and `Line`s and other `FormatElement`s are being 
 
 <img src="../knowledge/javascript_formatter_ir_example.png" data-canonical-src="../knowledge/javascript_formatter_ir_example.png" width="500"/>
 
-However once we think we know what the Formatter IR looks like, we'll then want to look through formatter methods and formatter `utils` to see which methods will actually result in the right `Group`s, `Line`s, and other **non-token** `FormatterElement`s, etc.
+But we'll have to compare w/ the documentation to try to understand why they were inserted at those locations by the existing formatter logic.
+
+At this point, once we think we know what we want the Formatter IR to look like for our given input, we'll then want to look through formatter methods and formatter `utils` to see which methods will actually result in the right `Group`s, `Line`s, and other **non-token** `FormatterElement`s, etc. (And use/add/modify accordingly, see Rome formatter FAQ above)
 
 Our issue: https://github.com/rome/tools/issues/2275
 (Other JSX Formatter PR for reference: https://github.com/rome/tools/pull/2273)
