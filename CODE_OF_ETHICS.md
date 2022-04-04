@@ -75,7 +75,7 @@ This code of conduct and its related procedures also applies to unacceptable beh
 
 ## 10. Contact info
 
-Community Organizer: [email address image](email-address-image.gif)
+Community Organizer: ![email address image](email-address-image.gif)
 
 ## 11. License and attribution
 
