@@ -15,10 +15,10 @@ Issue: https://github.com/rome/tools/issues/2275
 4. Formatter helper methods may construct pieces of this IR that we don't want/need - for example, `formatter.format_list` injecting `LineMode::Empty` or `LineMode::Hard`, leaving us w/ questions like:
 
 Outstanding Questions:
-1. When do we want to use an existing formatter helper?
-2. When do we want to leave formatter untouched and keep our logic within a specific Node type's `ToFormatElement` ?
-3. When do we want to add a formatter helper?
-4. When do we want to modify an existing formatter helper implementation?
+1. When do we want to use an existing `formatter` helper?
+2. When do we want to leave `formatter` untouched and keep our logic within a specific Node type's `ToFormatElement` ?
+3. When do we want to add a `formatter` helper?
+4. When do we want to modify an existing `formatter` helper implementation?
 
 In deriving answers for these questions, we've further uncovered that there are three distinct areas of the codebase that matter while contributing to the rome formatter:
 
@@ -41,7 +41,7 @@ When should I
 - Theoretically you always use the `formatter`, even when you indirectly call `token.format_or_empty(formatter)`. Usually you directly use the `formatter` when you don't have to format recurring patterns such as separated lists, delimited blocks, etc.;
 
 ### add a new `formatter` helper
-- When it's a frequent pattern used by a variety of  nodes. If it only applies to a specific group of nodes, prefer `utils` (for example, formatting expressions with left and right hand sides)
+- When it's a frequent pattern used by a variety of nodes. If it only applies to a specific group of nodes, prefer `utils` (for example, formatting expressions with left and right hand sides)
 
 ### modify an exsting `formatter` helper
 - when there's a bug or a new requirement in an existing pattern that pops up
