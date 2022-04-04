@@ -56,4 +56,10 @@ When should I
 ### modify an exsting `formatter` method
 - when there's a bug or a new requirement in an existing pattern that pops up
 
+# Tokens, Trivia, and Comments FAQ
+- What is trivia? See: https://github.com/rome/tools/blob/e2799fdd9ff12f8846dc0076bdf293215229d560/crates/rome_rowan/src/syntax/trivia.rs#L7
+- Note that the word `Comment` can mean `FormatElement`, it is a node on the Formatter IR, see: https://github.com/rome/tools/blob/main/crates/rome_formatter/src/format_element.rs#L916
+
+Outstanding questions:
+- Could `FormatElement::Comment` have content that is any of `TriviaPieceKind`: https://github.com/rome/tools/blob/e2799fdd9ff12f8846dc0076bdf293215229d560/crates/rome_rowan/src/syntax/trivia.rs#L7 ?
 
