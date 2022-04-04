@@ -118,7 +118,7 @@ We won't be generating an IR like above, because that string of text represents 
 The tricky part, I think will be knowing which formatter functions are available so that we end up with the `Line`'s and `Group`'s and other `FormatElement`s, that we want. (For example, "what is the difference between a `Group` and a `HardGroup`, and will we need it for this test case or the next one...etc..?")
 One way to see where `Group`'s and `Line`s and other `FormatElement`s are being inserted is to take a look in the playground for javascript input that has already been implemented:
 
-<img src="../knowledge/javascript_formatter_ir_example.png" data-canonical-src="../knowledge/javascript_formatter_ir_example.png" width="200"/>
+<img src="../knowledge/javascript_formatter_ir_example.png" data-canonical-src="../knowledge/javascript_formatter_ir_example.png" width="500"/>
 
 However once we think we know what the Formatter IR looks like, we'll then want to look through formatter methods and formatter `utils` to see which methods will actually result in the right `Group`s, `Line`s, and other **non-token** `FormatterElement`s, etc.
 
