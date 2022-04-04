@@ -36,12 +36,12 @@ When should I
 - Try to find existing helpers but it's OK to use the low-level helpers like `join_elements` / `concat_elements` where necessary.
 - Be sure to test your formatting with comments because that's what many of those helpers handle for you.
 
-### leave a `formatter` helper untouched and keep our logic within a specific Node type's `ToFormatElement`?
+### leave a `formatter` method untouched and keep our logic within a specific Node type's `ToFormatElement`?
 - Anything that is node specific should remain in the node's `ToFormatElement` implementation.
 - Theoretically you always use the `formatter`, even when you indirectly call `token.format_or_empty(formatter)`. Usually you directly use the `formatter` when you don't have to format recurring patterns such as separated lists, delimited blocks, etc.;
 
-### add a new `formatter` helper
+### add a new `formatter` method
 - When it's a frequent pattern used by a variety of nodes. If it only applies to a specific group of nodes, prefer `utils` (for example, formatting expressions with left and right hand sides)
 
-### modify an exsting `formatter` helper
+### modify an exsting `formatter` method
 - when there's a bug or a new requirement in an existing pattern that pops up
