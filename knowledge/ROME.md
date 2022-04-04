@@ -60,8 +60,7 @@ When should I
 - What is trivia? See: https://github.com/rome/tools/blob/e2799fdd9ff12f8846dc0076bdf293215229d560/crates/rome_rowan/src/syntax/trivia.rs#L7
 - Note that the word `Comment` can mean `FormatElement`, it is a node on the Formatter IR, see: https://github.com/rome/tools/blob/main/crates/rome_formatter/src/format_element.rs#L916
 
-Outstanding questions:
-- Could `FormatElement::Comment` have content that is any of `TriviaPieceKind`: https://github.com/rome/tools/blob/e2799fdd9ff12f8846dc0076bdf293215229d560/crates/rome_rowan/src/syntax/trivia.rs#L7 ?
+Note: When rome maintainers use the word "comment" they are refer'ing to any of `TriviaPieceKind`: https://github.com/rome/tools/blob/e2799fdd9ff12f8846dc0076bdf293215229d560/crates/rome_rowan/src/syntax/trivia.rs#L7
 
 
 If we look in the Rome Playground, we can see the Formatter IR is already being constructed, it's just being constructed "poorly" with verbatim tokens:
