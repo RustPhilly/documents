@@ -29,6 +29,8 @@ Outstanding Questions:
 3. When do we want to add a `formatter` helper?
 4. When do we want to modify an existing `formatter` helper implementation?
 
+# Rome formatter FAQ
+
 In deriving answers for these questions, we've uncovered that there are three distinct areas of the codebase that we'll care about while contributing to the rome formatter
 
 1. `formatter` (`Formatter` instance) - tends to be language agnostic (it should not know anything about the AST) and it's the one in charge of manipulating tokens and trivias. It's like a CRUD for our internal IR.
@@ -36,8 +38,6 @@ In deriving answers for these questions, we've uncovered that there are three di
 3. `format_element` - functions that you need to **create** the `rome_formatter` IR. Our IR is essentially an `enum`, called `FormatElement`. **Using utility functions are way better** because they better help to shape and create the IR. For example, it's better to use a function called `soft_line_break_or_space` instead of directly using its implementation. 
 
 This means, when we aren't using or modifying formatter helpers (`formatter` methods) to manipulate `tokens` and `trivia`, then we need to determine whether we should be using or modifying `utils` or writing custom logic in `ToFormatElement`.
-
-# Rome formatter FAQ
 
 When should I
 
