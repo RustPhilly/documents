@@ -91,7 +91,6 @@ Before we touch any more code, let's write what we think the Formatter IR should
     </Foo>
 
 // expected output
-List [
-    
-]
+
+/* TODO */
 ```
