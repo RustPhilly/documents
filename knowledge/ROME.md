@@ -110,7 +110,7 @@ List [
 ]
 
 // IR as code
-<Foo>text</Foo>;
+<Foo>text</Foo>; // <--- OK
 ```
 
 We won't be generating an IR like above, because that string of text represents a tree of nodes, each needs to have the knowledge of how to format itself, (which is why we have a file and `impl ToFormatElement` for each node type.
