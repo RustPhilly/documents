@@ -8,7 +8,12 @@ Issue: https://github.com/rome/tools/issues/2275
 ### Mob Session 2 Learnings:
 1. Understanding that our goal, when adding logic to `rome_formatter`, is to create an Intermediate representation of FormatElements, where `FormatElement` are just a handful of enums. That this (Formatter IR) is an additional abstraction on top of the AST/CST that the parser generates. (also shown on the Rome playground).
 2. How to build and open docs for rome_formatter's formatter
-3. That the formatter helper methods are just helpers that construct pieces of this Formatter IR, ( https://github.com/RustPhilly/tools/blob/main/crates/rome_formatter/docs/implement_the_formatter.md ) (and may construct pieces of this IR that we don't want/need - for example, `formatter.format_list` injecting `LineMode::Empty` or `LineMode::Hard`, leaving us w/ questions like:
+3. That the formatter helper methods are just helpers that construct pieces of this Formatter IR, ( https://github.com/RustPhilly/tools/blob/main/crates/rome_formatter/docs/implement_the_formatter.md )
+
+![alt text](https://github.com/RustPhilly/tools/blob/feature/format-jsx-element/crates/rome_formatter/docs/high-level-rome-formatter-overview.jpeg)
+
+
+4. Formatter helper methods may construct pieces of this IR that we don't want/need - for example, `formatter.format_list` injecting `LineMode::Empty` or `LineMode::Hard`, leaving us w/ questions like:
 
 Outstanding Questions:
 1. When do we want to use an existing formatter helper?
