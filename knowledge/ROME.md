@@ -55,3 +55,5 @@ When should I
 
 ### modify an exsting `formatter` method
 - when there's a bug or a new requirement in an existing pattern that pops up
+
+
