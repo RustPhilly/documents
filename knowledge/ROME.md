@@ -94,3 +94,5 @@ Before we touch any more code, let's write what we think the Formatter IR should
 
 /* TODO */
 ```
+
+See this PR for other JSX Formatter issue for reference: https://github.com/rome/tools/pull/2273
