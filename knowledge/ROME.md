@@ -63,3 +63,33 @@ When should I
 Outstanding questions:
 - Could `FormatElement::Comment` have content that is any of `TriviaPieceKind`: https://github.com/rome/tools/blob/e2799fdd9ff12f8846dc0076bdf293215229d560/crates/rome_rowan/src/syntax/trivia.rs#L7 ?
 
+Realization:
+- The Formatter IR is already being constructed, it's just being constructed poorly with verbatim tokens:
+```rust
+// input
+<b>
+  test
+  </b>;
+
+// output
+List [
+    Verbatim(
+        Token("<b>\n  test\n  </b>", 0..17),
+    ),
+    Token(";", 17..18),
+    Token("", 19..19),
+    Line(Hard),
+]
+```
+
+Before we touch any more code, let's write what we think the Formatter IR should actually look like, using https://github.com/rome/tools/blob/main/crates/rome_formatter/src/format_element.rs#L874
+
+```rust
+// input
+<b>
+  test
+  </b>;
+
+// expected output
+
+```
