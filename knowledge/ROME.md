@@ -113,7 +113,7 @@ List [
 <Foo>text</Foo>; // <--- We already know we want this result (to match Prettier output for the same input), but in order to achieve this we have to reason a little more about the Formatter IR being generated above.
 ```
 
-We won't be generating an IR like above, because each word and symbol should be a Token in the IR. (Think about it: that string of text "<Foo>text</Foo>" would be parsed as a tree of nodes, and each node will have the knowledge of how to format itself as a tree of `FormatterElement`s, which is why we have a file and `impl ToFormatElement` for each node type.
+We won't be generating an IR like above, because each word and symbol should be a Token in the IR. (Think about it: that string of text "\<Foo\>text\<\/Foo\>" would be parsed as a tree of nodes, and each node will have the knowledge of how to format itself as a tree of `FormatterElement`s, which is why we have a file and `impl ToFormatElement` for each node type.
 
 The tricky part, I think will be knowing which formatter functions are available so that we end up with the `Line`'s and `Group`'s and other `FormatElement`s, that we want. (For example, "what is the difference between a `Group` and a `HardGroup`, and will we need it for this test case or the next one...etc..?")
 One way to see where `Group`'s and `Line`s and other `FormatElement`s are being inserted is to take a look in the playground for javascript input that has already been implemented:
