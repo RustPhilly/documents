@@ -5,12 +5,21 @@ Issue: https://github.com/rome/tools/issues/2275
 2. Given syntax input, how to use .format to tell `rome_formatter` to navigate ("visit") a node, and that there is essentially a 1:1 mapping between a file (`impl ToFormatElement for`) per Abstract Syntax Tree Node for the given syntax input
 3. Where to add test files,  and how to generate snapshot tests. ( https://github.com/RustPhilly/tools/blob/main/crates/rome_formatter/docs/write_tests.md )
 
+Example AST (from Rome Playground):
+
+<img src="../knowledge/ast.png" data-canonical-src="../knowledge/ast.png" width="200"/>
+
+Example of which files might map to nodes in the above example tree, each file has a `impl ToFormatElement`:
+
+<img src="../knowledge/rome_formatter_jsx.png" data-canonical-src="../knowledge/rome_formatter_jsx.png" width="200"/>
+
+
 ### Mob Session 2 Learnings:
 1. Understanding that our goal, when adding logic to `rome_formatter`, is to create an Intermediate representation of FormatElements, where `FormatElement` are just a handful of enums. That this (Formatter IR) is an additional abstraction on top of the AST/CST that the parser generates. (also shown on the Rome playground).
 2. How to build and open docs for rome_formatter's formatter.
 3. That the formatter helper methods are just helpers that construct pieces of this Formatter IR, ( https://github.com/RustPhilly/tools/blob/main/crates/rome_formatter/docs/implement_the_formatter.md )
 
-![alt text](https://github.com/RustPhilly/tools/blob/feature/format-jsx-element/crates/rome_formatter/docs/high-level-rome-formatter-overview.jpeg)
+![high level diagram of rome formatter input and output](https://github.com/RustPhilly/tools/blob/feature/format-jsx-element/crates/rome_formatter/docs/high-level-rome-formatter-overview.jpeg)
 
 4. Formatter helper methods may construct pieces of this IR that we don't want/need - for example, `formatter.format_list` injecting `LineMode::Empty` or `LineMode::Hard`, leaving us w/ questions like:
 
