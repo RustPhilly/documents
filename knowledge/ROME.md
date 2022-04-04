@@ -110,15 +110,17 @@ List [
 ]
 
 // IR as code
-<Foo>text</Foo>; // <--- we technically still want this outcome, to match Prettier
+<Foo>text</Foo>; // <--- We already know we want this result (to match Prettier output for the same input), but in order to achieve this we have to reason a little more about the Formatter IR being generated above.
 ```
 
-We won't be generating an IR like above, because that string of text represents a tree of nodes, each needs to have the knowledge of how to format itself, (which is why we have a file and `impl ToFormatElement` for each node type).
+We won't be generating an IR like above, because that string of text represents a tree of nodes, and each node has the knowledge of how to format itself as a tree of `FormatterElement`s, (which is why we have a file and `impl ToFormatElement` for each node type).
 
-The tricky part, I think will be knowing which formatter functions are available so that we end up with the `Line`'s and `Group`'s and other `FormatElement`s, that we want. (For example, "what is the difference between a `Group` and a `HardGroup`, and will we need it for this test case or the next one?")
+The tricky part, I think will be knowing which formatter functions are available so that we end up with the `Line`'s and `Group`'s and other `FormatElement`s, that we want. (For example, "what is the difference between a `Group` and a `HardGroup`, and will we need it for this test case or the next one...etc..?")
 One way to see where `Group`'s and `Line`s and other `FormatElement`s are being inserted is to take a look in the playground for javascript input that has already been implemented:
 
 <img src="../knowledge/javascript_formatter_ir_example.png" data-canonical-src="../knowledge/javascript_formatter_ir_example.png" width="200"/>
+
+However once we think we know what the Formatter IR looks like, we'll then want to look through formatter methods and formatter `utils` to see which methods will actually result in the right `Group`s, `Line`s, and other **non-token** `FormatterElement`s, etc.
 
 Our issue: https://github.com/rome/tools/issues/2275
 (Other JSX Formatter PR for reference: https://github.com/rome/tools/pull/2273)
